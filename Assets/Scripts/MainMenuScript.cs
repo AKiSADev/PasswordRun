@@ -9,6 +9,7 @@ public class MainMenuScript : MonoBehaviour
 {
 
     string playerName;
+    int firstTime;
 
     public GameObject namePanel;
     public GameObject usedPanel;
@@ -16,6 +17,7 @@ public class MainMenuScript : MonoBehaviour
 
     private void Start()
     {
+        firstTime = PlayerPrefs.GetInt("FirstTime");
         playerName = PlayerPrefs.GetString("PlayerName");
 
         Debug.Log("PLAYER NAME: " + playerName);
@@ -27,7 +29,13 @@ public class MainMenuScript : MonoBehaviour
 
     public void goToGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+        if (firstTime == 0)
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainGame");
+        else
+        {
+            PlayerPrefs.SetInt("FirstTime", 0);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Explanation");
+        }
     }
 
 
