@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public Text fakePassDisplay;
 
     public bool isPaused = false;
+    public bool doubleJump = true;
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -48,12 +49,30 @@ public class Player : MonoBehaviour
             v2.y = rb.velocity.y;
 
             rb.velocity = v2;
-            
 
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0) && isGrounded())
+            bool grounded = isGrounded();
+
+            if (grounded)
+                doubleJump = true;
+
+            if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)) 
             {
-                v2.y = jumpForce;
-                rb.velocity = v2;
+                if (grounded)
+                {
+                    v2.y = jumpForce;
+                    rb.velocity = v2;
+                }
+                else
+                {
+                    if (doubleJump)
+                    {
+                        v2.y = jumpForce;
+                        rb.velocity = v2;
+                        doubleJump = false;
+
+                    }
+                }
+
             }
         }
         else
