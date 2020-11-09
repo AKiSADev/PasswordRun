@@ -506,7 +506,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: MY BEST SCORES
+  m_Text: I MIEI PUNTEGGI MIGLIORI
 --- !u!222 &360700012
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -775,9 +775,9 @@ RectTransform:
   m_Father: {fileID: 1961966210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 324.39, y: 248.42}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 324.39, y: -36.58}
   m_SizeDelta: {x: 488.5, y: 71.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609191127

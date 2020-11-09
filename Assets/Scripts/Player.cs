@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public Text passwordText;
     public Text weaknessText;
     public Text fakePassDisplay;
+    public Text bonusT;
 
     public bool isPaused = false;
     public bool doubleJump = true;
@@ -129,6 +130,52 @@ public class Player : MonoBehaviour
     {
         if (!endGame)
         {
+
+            string pass = dataStorage.getPassword();
+            Debug.Log(pass);
+            passwordText.text = pass;
+
+            switch (DataStorage.CheckStrength(pass))
+            {
+                case 0:
+                    {
+                        weaknessText.text = "Inesistente";
+                        dataStorage.points += 0;
+                        bonusT.text = "+0";
+                        break;
+                    }
+                case 1:
+                case 2:
+                case 3:
+                    {
+                        weaknessText.text = "Non adeguata. Lo so che puoi fare di meglio";
+                        dataStorage.points += 100;
+                        bonusT.text = "+100";
+                        break;
+                    }
+                case 4:
+                    {
+                        weaknessText.text = "Buono ma ti manca ancora qualcosa...";
+                        dataStorage.points += 200;
+                        bonusT.text = "+200";
+                        break;
+                    }
+                case 5:
+                    {
+                        weaknessText.text = "Ottimo!";
+                        dataStorage.points += 500;
+                        bonusT.text = "+500";
+                        break;
+                    }
+                case 6:
+                    {
+                        weaknessText.text = "Questa password è perfetta!";
+                        dataStorage.points += 1000;
+                        bonusT.text = "+1000";
+                        break;
+                    }
+            }
+
             playerName = PlayerPrefs.GetString("PlayerName");
             //playerName = "UnityTester2";
             PlayerScore ps = new PlayerScore();
@@ -146,36 +193,9 @@ public class Player : MonoBehaviour
                 Destroy(rb);
             isPaused = true;
             deathPanel.SetActive(true);
-
-            string pass = dataStorage.getPassword();
-            Debug.Log(pass);
-            passwordText.text = pass;
-
-            switch (DataStorage.CheckStrength(pass))
-            {
-                case 0:
-                    weaknessText.text = "Inesistente";
-                    break;
-
-                case 1:
-                    weaknessText.text = "Non adeguata. Lo so che puoi fare di meglio";
-                    break;
-
-                case 2:
-                case 3:
-                case 4:
-                    weaknessText.text = "Buono ma ti manca ancora qualcosa...";
-                    break;
-
-                case 5:
-                    weaknessText.text = "Ottimo!";
-                    break;
-                case 6:
-                    weaknessText.text = "Questa password è perfetta!";
-                    break;
-            }
-
             endGame = true;
+
+            
         }
     }
 

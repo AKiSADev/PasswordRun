@@ -189,7 +189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EXIT
+  m_Text: ESCI
 --- !u!222 &13241429
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1824,7 +1824,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SCORES
+  m_Text: PUNTEGGI
 --- !u!222 &1596196285
 CanvasRenderer:
   m_ObjectHideFlags: 0
